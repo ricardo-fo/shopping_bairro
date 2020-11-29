@@ -1,15 +1,15 @@
-CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_cliente (
+CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_entregador (
   @cd_email VARCHAR(30),
-  @nm_cliente VARCHAR(40),
+  @nm_vendedor VARCHAR(40),
   @nm_sobrenome VARCHAR(40),
-  @cd_senha VARCHAR(30),
+  @cd_senha VARCHAR(100),
   @cd_celular VARCHAR(9),
   @cd_ddd_celular VARCHAR(2),
-  @cd_cep VARCHAR(2),
+  @cd_cep VARCHAR(8),
   @cd_estado INT,
   @cd_cidade INT,
   @nm_bairro VARCHAR(50),
-  @ds_logradouro VARCHAR(30),
+  @ds_logradoura VARCHAR(30),
   @ic_concorda_termos BIT
 )
 
@@ -29,9 +29,9 @@ DECLARE @existe_email BIT;
 SELECT
   @existe_email = 1
 FROM
-  shopping_bairro.dbo.cliente c
+  shopping_bairro.dbo.vendedor v
 WHERE
-  c.cd_email = LOWER(TRIM(@cd_email));
+  v.cd_email = LOWER(TRIM(@cd_email));
 
 IF @existe_email = 1
 BEGIN
@@ -41,20 +41,20 @@ BEGIN
   RETURN;
 END
 
--- Sanitização do nome do cliente
-IF LOWER(TRIM(@nm_cliente)) = ''
+-- Sanitização do nome do vendedor
+IF LOWER(TRIM(@nm_vendedor)) = ''
 BEGIN
   SELECT
     0 success,
-    'O nome do cliente não pode ser nulo.' msg
+    'O nome do vendedor não pode ser nulo.' msg
 END
 
--- Sanitização do sobrenome do cliente
+-- Sanitização do sobrenome do vendedor
 IF LOWER(TRIM(@nm_sobrenome)) = ''
 BEGIN
   SELECT
     0 success,
-    'O sobrenome do cliente não pode ser nulo.' msg
+    'O sobrenome do vendedor não pode ser nulo.' msg
 END
 
 -- Validação do ID do estado
@@ -116,10 +116,9 @@ END
 -- Criptografia da senha
 DECLARE @token_senha VARCHAR(100) = PWDENCRYPT(@cd_senha);
 
--- Inserção do novo cliente
-INSERT INTO shopping_bairro.dbo.cliente (
+INSERT INTO shopping_bairro.dbo.vendedor (
   cd_email,
-  nm_cliente,
+  nm_vendedor,
   nm_sobrenome,
   cd_senha,
   cd_celular,
@@ -128,11 +127,11 @@ INSERT INTO shopping_bairro.dbo.cliente (
   cd_estado,
   cd_cidade,
   cd_bairro,
-  ds_logradouro,
-  ic_concorda_termos,
+  ds_logradoura,
+  ic_concorda_termos
 ) VALUES (
   LOWER(TRIM(@cd_email)),
-  LOWER(TRIM(@nm_cliente)),
+  LOWER(TRIM(@nm_vendedor)),
   LOWER(TRIM(@nm_sobrenome)),
   @token_senha,
   @cd_celular,
@@ -147,4 +146,4 @@ INSERT INTO shopping_bairro.dbo.cliente (
 
 SELECT
   1 success,
-  'Cliente inserido com sucesso.' msg;
+  'Vendedor inserido com sucesso.' msg;

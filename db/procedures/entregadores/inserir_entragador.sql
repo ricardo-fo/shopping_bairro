@@ -1,15 +1,16 @@
-CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_cliente (
+CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_entregador (
   @cd_email VARCHAR(30),
-  @nm_cliente VARCHAR(40),
+  @nm_entregador VARCHAR(40),
   @nm_sobrenome VARCHAR(40),
   @cd_senha VARCHAR(30),
   @cd_celular VARCHAR(9),
   @cd_ddd_celular VARCHAR(2),
-  @cd_cep VARCHAR(2),
+  @cd_cep VARCHAR(8),
+  @ds_logradouro VARCHAR(30),
   @cd_estado INT,
   @cd_cidade INT,
   @nm_bairro VARCHAR(50),
-  @ds_logradouro VARCHAR(30),
+  @nm_bairro_operacao VARCHAR(50),
   @ic_concorda_termos BIT
 )
 
@@ -29,9 +30,9 @@ DECLARE @existe_email BIT;
 SELECT
   @existe_email = 1
 FROM
-  shopping_bairro.dbo.cliente c
+  shopping_bairro.dbo.entregador e
 WHERE
-  c.cd_email = LOWER(TRIM(@cd_email));
+  e.cd_email = LOWER(TRIM(@cd_email));
 
 IF @existe_email = 1
 BEGIN
@@ -41,20 +42,20 @@ BEGIN
   RETURN;
 END
 
--- Sanitização do nome do cliente
-IF LOWER(TRIM(@nm_cliente)) = ''
+-- Sanitização do nome do entregador
+IF LOWER(TRIM(@nm_entregador)) = ''
 BEGIN
   SELECT
     0 success,
-    'O nome do cliente não pode ser nulo.' msg
+    'O nome do entregador não pode ser nulo.' msg
 END
 
--- Sanitização do sobrenome do cliente
+-- Sanitização do sobrenome do entregador
 IF LOWER(TRIM(@nm_sobrenome)) = ''
 BEGIN
   SELECT
     0 success,
-    'O sobrenome do cliente não pode ser nulo.' msg
+    'O sobrenome do entregador não pode ser nulo.' msg
 END
 
 -- Validação do ID do estado
@@ -113,13 +114,34 @@ BEGIN
     b.nm_bairro = LOWER(TRIM(@nm_bairro));
 END
 
+-- Validação do bairro de operação
+DECLARE @cd_bairro_operacao INT;
+SELECT
+  @cd_bairro_operacao = b.cd_bairro
+FROM
+  shopping_bairro.dbo.bairro b
+WHERE
+  b.nm_bairro = LOWER(TRIM(@nm_bairro_operacao));
+
+-- Se o bairro não estiver registrado, ele é criado
+IF @cd_bairro_operacao IS NULL
+BEGIN
+  INSERT INTO shopping_bairro.dbo.bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro_operacao)));
+
+  SELECT
+    @cd_bairro_operacao = b.cd_bairro
+  FROM
+    shopping_bairro.dbo.bairro b
+  WHERE
+    b.nm_bairro = LOWER(TRIM(@nm_bairro_operacao));
+END
+
 -- Criptografia da senha
 DECLARE @token_senha VARCHAR(100) = PWDENCRYPT(@cd_senha);
 
--- Inserção do novo cliente
-INSERT INTO shopping_bairro.dbo.cliente (
+INSERT INTO shopping_bairro.dbo.entregador (
   cd_email,
-  nm_cliente,
+  nm_entregador,
   nm_sobrenome,
   cd_senha,
   cd_celular,
@@ -128,11 +150,12 @@ INSERT INTO shopping_bairro.dbo.cliente (
   cd_estado,
   cd_cidade,
   cd_bairro,
+  cd_bairro_operacao,
   ds_logradouro,
-  ic_concorda_termos,
+  ic_concorda_termos
 ) VALUES (
   LOWER(TRIM(@cd_email)),
-  LOWER(TRIM(@nm_cliente)),
+  LOWER(TRIM(@nm_entregador)),
   LOWER(TRIM(@nm_sobrenome)),
   @token_senha,
   @cd_celular,
@@ -141,10 +164,11 @@ INSERT INTO shopping_bairro.dbo.cliente (
   @cd_estado,
   @cd_cidade,
   @cd_bairro,
+  @cd_bairro_operacao,
   LOWER(TRIM(@ds_logradouro)),
   @ic_concorda_termos
 );
 
 SELECT
   1 success,
-  'Cliente inserido com sucesso.' msg;
+  'Entregador inserido com sucesso.' msg;
