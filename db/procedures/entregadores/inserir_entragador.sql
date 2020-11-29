@@ -48,6 +48,7 @@ BEGIN
   SELECT
     0 success,
     'O nome do entregador não pode ser nulo.' msg
+  RETURN;
 END
 
 -- Sanitização do sobrenome do entregador
@@ -56,6 +57,7 @@ BEGIN
   SELECT
     0 success,
     'O sobrenome do entregador não pode ser nulo.' msg
+  RETURN;
 END
 
 -- Validação do ID do estado

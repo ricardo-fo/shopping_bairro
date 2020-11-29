@@ -47,6 +47,7 @@ BEGIN
   SELECT
     0 success,
     'O nome do vendedor não pode ser nulo.' msg
+  RETURN;
 END
 
 -- Sanitização do sobrenome do vendedor
@@ -55,6 +56,7 @@ BEGIN
   SELECT
     0 success,
     'O sobrenome do vendedor não pode ser nulo.' msg
+  RETURN;
 END
 
 -- Validação do ID do estado
