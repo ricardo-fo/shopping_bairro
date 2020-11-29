@@ -1,0 +1,8 @@
+CREATE TABLE shopping_bairro.dbo.entrega (
+  cd_entrega INT NOT NULL PRIMARY KEY IDENTITY,
+  cd_entregador INT NOT NULL FOREIGN KEY REFERENCES dbo.entregador(cd_entregador),
+  dt_inicio_entrega DATETIME NOT NULL,
+  dt_fim_entrega DATETIME NOT NULL,
+  ic_situacao_entrega VARCHAR(20),
+  qt_km_distancia_entrega INT NOT NULL
+);
