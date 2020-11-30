@@ -1,4 +1,4 @@
-CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_entregador (
+CREATE PROCEDURE pr_inserir_vendedor (
   @cd_email VARCHAR(30),
   @nm_vendedor VARCHAR(40),
   @nm_sobrenome VARCHAR(40),

@@ -5,7 +5,7 @@ CREATE PROCEDURE pr_inserir_cliente (
   @cd_senha VARCHAR(30),
   @cd_celular VARCHAR(9),
   @cd_ddd_celular VARCHAR(2),
-  @cd_cep VARCHAR(2),
+  @cd_cep VARCHAR(8),
   @cd_estado INT,
   @cd_cidade INT,
   @nm_bairro VARCHAR(50),

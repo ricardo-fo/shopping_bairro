@@ -6,7 +6,7 @@ CREATE TABLE cliente (
   cd_senha VARCHAR(100) NOT NULL,
   cd_celular VARCHAR(9) NOT NULL,
   cd_ddd_celular VARCHAR(2) NOT NULL,
-  cd_cep VARCHAR(2) NOT NULL,
+  cd_cep VARCHAR(8) NOT NULL,
   cd_estado INT NOT NULL FOREIGN KEY REFERENCES estado(cd_estado),
   cd_cidade INT NOT NULL FOREIGN KEY REFERENCES cidade(cd_cidade),
   cd_bairro INT NOT NULL FOREIGN KEY REFERENCES bairro(cd_bairro),

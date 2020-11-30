@@ -1,3 +1,44 @@
-INSERT INTO entregador (cd_email, nm_entregador, nm_sobrenome, cd_senha, cd_celular, cd_ddd_celular, cd_cep, ds_logradouro, cd_estado, cd_cidade, cd_bairro, cd_bairro_operacao, cd_login_token
-, cd_login_token_mobile, cd_token_reset_email, cd_token_reset_celular, cd_token_reset_senha, ic_concorda_termos, ic_ativo, ic_situacao_analise) VALUES
-('teste@bol.com', 'Rodrigo', 'Suarez Moreira', 'teste123', '998776713', '13', '11313', 'casa', 1, 1, 1, 1, '12', '12', '12', '12', '12', 1, 0);
+EXEC dbo.inserir_entregador
+  @cd_email = 'teste@bol.com',
+  @nm_entregador = 'Rodrigo',
+  @nm_sobrenome = 'Suarez Moreira',
+  @cd_senha = 'teste123',
+  @cd_celular = '998776713',
+  @cd_ddd_celular = '13',
+  @cd_cep = '11111111',
+  @ds_logradouro = 'Minha rua',
+  @cd_estado = 1,
+  @cd_cidade = 1,
+  @nm_bairro 'Meu bairro 1',
+  @nm_bairro_operacao = 'Meu bairro 1',
+  @ic_concorda_termos = 1;
+
+EXEC dbo.inserir_entregador
+  @cd_email = 'entregador_01@email.com',
+  @nm_entregador = 'Entregador',
+  @nm_sobrenome = 'Silva',
+  @cd_senha = '123456789',
+  @cd_celular = '999999999',
+  @cd_ddd_celular = '13',
+  @cd_cep = '11111111',
+  @ds_logradouro = 'Minha rua',
+  @cd_estado = 1,
+  @cd_cidade = 2,
+  @nm_bairro 'Meu bairro 2',
+  @nm_bairro_operacao = 'Meu bairro 2',
+  @ic_concorda_termos = 1;
+
+EXEC dbo.inserir_entregador
+  @cd_email = 'entregador_02@email.com',
+  @nm_entregador = 'Entregador',
+  @nm_sobrenome = 'Pereira',
+  @cd_senha = 'abcdefghi',
+  @cd_celular = '999999999',
+  @cd_ddd_celular = '13',
+  @cd_cep = '22222222',
+  @ds_logradouro = 'Minha rua',
+  @cd_estado = 1,
+  @cd_cidade = 2,
+  @nm_bairro 'Meu bairro 3',
+  @nm_bairro_operacao = 'Meu bairro 3',
+  @ic_concorda_termos = 1;
