@@ -1,0 +1,3 @@
+INSERT INTO vendedor (cd_email, nm_vendedor, nm_sobrenome, cd_senha, cd_celular, cd_ddd_celular, cd_cep, cd_estado, cd_cidade, cd_bairro, ds_logradoura, cd_login_token, 
+cd_login_token_mobile, cd_token_reset_email, cd_token_reset_celular, cd_token_reset_senha) VALUES
+('teste@bol.com.br', 'Rodrigo', 'Suarez Moreira', 'teste123', '998776713', '13', '1212', 1, 1, 1, 'teste', '12', '13', '14', ' 15', '16', 1, 1);

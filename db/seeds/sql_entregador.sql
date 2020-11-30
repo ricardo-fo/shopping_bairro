@@ -1,0 +1,3 @@
+INSERT INTO entregador (cd_email, nm_entregador, nm_sobrenome, cd_senha, cd_celular, cd_ddd_celular, cd_cep, ds_logradouro, cd_estado, cd_cidade, cd_bairro, cd_bairro_operacao, cd_login_token
+, cd_login_token_mobile, cd_token_reset_email, cd_token_reset_celular, cd_token_reset_senha, ic_concorda_termos, ic_ativo, ic_situacao_analise) VALUES
+('teste@bol.com', 'Rodrigo', 'Suarez Moreira', 'teste123', '998776713', '13', '11313', 'casa', 1, 1, 1, 1, '12', '12', '12', '12', '12', 1, 0);
