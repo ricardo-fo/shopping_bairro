@@ -1,4 +1,4 @@
-CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_cliente (
+CREATE PROCEDURE pr_inserir_cliente (
   @cd_email VARCHAR(30),
   @nm_cliente VARCHAR(40),
   @nm_sobrenome VARCHAR(40),
@@ -29,7 +29,7 @@ DECLARE @existe_email BIT;
 SELECT
   @existe_email = 1
 FROM
-  shopping_bairro.dbo.cliente c
+  cliente c
 WHERE
   c.cd_email = LOWER(TRIM(@cd_email));
 
@@ -37,8 +37,7 @@ IF @existe_email = 1
 BEGIN
   SELECT
     0 success,
-    'O e-mail informado já está em uso.' msg,
-  RETURN;
+    'O e-mail informado já está em uso.' msg
 END
 
 -- Sanitização do nome do cliente
@@ -64,7 +63,7 @@ DECLARE @existe_estado BIT;
 SELECT
   @existe_estado = 1
 FROM
-  shopping_bairro.dbo.estado e
+  estado e
 WHERE
   e.cd_estado = @cd_estado;
 
@@ -81,9 +80,9 @@ DECLARE @existe_cidade BIT;
 SELECT
   @existe_cidade = 1
 FROM
-  shopping_bairro.dbo.cidade c
+  cidade c
 WHERE
-  e.cd_cidade = @cd_cidade;
+  c.cd_cidade = @cd_cidade;
 
 IF @existe_cidade IS NULL
 BEGIN
@@ -98,19 +97,19 @@ DECLARE @cd_bairro INT;
 SELECT
   @cd_bairro = b.cd_bairro
 FROM
-  shopping_bairro.dbo.bairro b
+  bairro b
 WHERE
   b.nm_bairro = LOWER(TRIM(@nm_bairro));
 
 -- Se o bairro não estiver registrado, ele é criado
 IF @cd_bairro IS NULL
 BEGIN
-  INSERT INTO shopping_bairro.dbo.bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro)));
+  INSERT INTO bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro)));
 
   SELECT
     @cd_bairro = b.cd_bairro
   FROM
-    shopping_bairro.dbo.bairro b
+    bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro));
 END
@@ -119,7 +118,7 @@ END
 DECLARE @token_senha VARCHAR(100) = PWDENCRYPT(@cd_senha);
 
 -- Inserção do novo cliente
-INSERT INTO shopping_bairro.dbo.cliente (
+INSERT INTO cliente (
   cd_email,
   nm_cliente,
   nm_sobrenome,
@@ -131,7 +130,7 @@ INSERT INTO shopping_bairro.dbo.cliente (
   cd_cidade,
   cd_bairro,
   ds_logradouro,
-  ic_concorda_termos,
+  ic_concorda_termos
 ) VALUES (
   LOWER(TRIM(@cd_email)),
   LOWER(TRIM(@nm_cliente)),

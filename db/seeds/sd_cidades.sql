@@ -1,4 +1,4 @@
-INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Afonso Cláudio', 7),
 ('Água Doce do Norte', 7),
 ('Águia Branca', 7),
@@ -998,7 +998,8 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Itaberaí', 8),
 ('Itaguari', 8),
 ('Itaguaru', 8),
-('Itajá', 8),
+('Itajá', 8);
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Itapaci', 8),
 ('Itapirapuã', 8),
 ('Itapuranga', 8),
@@ -1925,7 +1926,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Iraí de Minas', 10),
 ('Itabira', 10),
 ('Itabirinha de Mantena', 10),
-('Itabirito', 10),
+('Itabirito', 10);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Itacambira', 10),
 ('Itacarambi', 10),
 ('Itaguara', 10),
@@ -2008,7 +2011,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Lontra', 10),
 ('Luisburgo', 10),
 ('Luislândia', 10),
-('Luminárias', 10),
+('Luminárias', 10);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Luz', 10),
 ('Machacalis', 10),
 ('Machado', 10),
@@ -2067,7 +2072,7 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Montezuma', 10),
 ('Morada Nova de Minas', 11);
 
-INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Morro da Garça', 10),
 ('Morro do Pilar', 10),
 ('Munhoz', 10),
@@ -2219,7 +2224,8 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Ritápolis', 10),
 ('Rochedo de Minas', 10),
 ('Rodeiro', 10),
-('Romaria', 10),
+('Romaria', 10);
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Rosário da Limeira', 10),
 ('Rubelita', 10),
 ('Rubim', 10),
@@ -2614,7 +2620,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Campo de Santana', 14),
 ('Capim', 14),
 ('Caraúbas', 14),
-('Carrapateira', 14),
+('Carrapateira', 14);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Casserengue', 14),
 ('Catingueira', 14),
 ('Catolé do Rocha', 14),
@@ -2779,7 +2787,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Tenório', 14),
 ('Triunfo', 14),
 ('Uiraúna', 14),
-('Umbuzeiro', 14),
+('Umbuzeiro', 14);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Várzea', 14),
 ('Vieirópolis', 14),
 ('Vista Serrana', 14),
@@ -2864,7 +2874,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Cidade Gaúcha', 17),
 ('Clevelândia', 17),
 ('Colombo', 17),
-('Colorado', 17),
+('Colorado', 17);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Congonhinhas', 17),
 ('Conselheiro Mairinck', 17),
 ('Contenda', 17),
@@ -2935,7 +2947,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Inácio Martins', 17),
 ('Inajá', 17),
 ('Indianópolis', 17),
-('Ipiranga', 17),
+('Ipiranga', 17);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Iporã', 17),
 ('Iracema do Oeste', 17),
 ('Irati', 17),
@@ -3008,7 +3022,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Mercedes', 17),
 ('Mirador', 17),
 ('Miraselva', 17),
-('Missal', 17),
+('Missal', 17);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Moreira Sales', 17),
 ('Morretes', 17),
 ('Munhoz de Melo', 17),
@@ -3238,7 +3254,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Cortês', 15),
 ('Cumaru', 15),
 ('Cupira', 15),
-('Custódia', 15),
+('Custódia', 15);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Dormentes', 15),
 ('Escada', 15),
 ('Exu', 15),
@@ -3367,7 +3385,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Vertentes', 15),
 ('Vicência', 15),
 ('Vitória de Santo Antão', 15),
-('Xexéu', 15),
+('Xexéu', 15);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Acauã', 16),
 ('Agricolândia', 16),
 ('Água Branca', 16),
@@ -3449,7 +3469,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Esperantina', 16),
 ('Fartura do Piauí', 16),
 ('Flores do Piauí', 16),
-('Floresta do Piauí', 16),
+('Floresta do Piauí', 16);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Floriano', 16),
 ('Francinópolis', 16),
 ('Francisco Ayres', 16),
@@ -3528,7 +3550,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Pedro Laurentino', 16),
 ('Picos', 16),
 ('Pimenteiras', 16),
-('Pio IX', 16),
+('Pio IX', 16);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Piracuruca', 16),
 ('Piripiri', 16),
 ('Porto', 16),
@@ -3865,7 +3889,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Amaral Ferrador', 22),
 ('Ametista do Sul', 22),
 ('André da Rocha', 22),
-('Anta Gorda', 22),
+('Anta Gorda', 22);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Antônio Prado', 22),
 ('Arambaré', 22),
 ('Araricá', 22),
@@ -3978,7 +4004,7 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Cruzaltense', 22),
 ('Cruzeiro do Sul', 23);
 
-INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('David Canabarro', 22),
 ('Derrubadas', 22),
 ('Dezesseis de Novembro', 22),
@@ -4157,8 +4183,10 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Passa Sete', 22),
 ('Passo do Sobrado', 22),
 ('Passo Fundo', 22),
-('Paulo Bento', 22),
-(4156, 'Paverama', 22),
+('Paulo Bento', 22);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
+('Paverama', 22),
 ('Pedras Altas', 22),
 ('Pedro Osório', 22),
 ('Pejuçara', 22),
@@ -5124,7 +5152,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Paulistânia', 25),
 ('Paulo de Faria', 25),
 ('Pederneiras', 25),
-('Pedra Bela', 25),
+('Pedra Bela', 25);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Pedranópolis', 25),
 ('Pedregulho', 25),
 ('Pedreira', 25),
@@ -5450,7 +5480,9 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Babaçulândia', 26),
 ('Bandeirantes do Tocantins', 26),
 ('Barra do Ouro', 26),
-('Barrolândia', 26),
+('Barrolândia', 26);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Bernardo Sayão', 26),
 ('Bom Jesus do Tocantins', 26),
 ('Brasilândia do Tocantins', 26),
@@ -5564,6 +5596,8 @@ INSERT INTO shopping_bairro.dbo.cidade (nm_cidade, cd_estado) VALUES
 ('Tocantínia', 26),
 ('Tocantinópolis', 26),
 ('Tupirama', 26),
-('Tupiratins', 26),
+('Tupiratins', 26);
+
+INSERT INTO cidade (nm_cidade, cd_estado) VALUES
 ('Wanderlândia', 26),
 ('Xambioá', 27);

@@ -1,4 +1,4 @@
-INSERT INTO shopping_bairro.dbo.estado (nm_estado, sg_estado) VALUES
+INSERT INTO estado (nm_estado, sg_estado) VALUES
 ('Acre', 'AC'),
 ('Alagoas', 'AL'),
 ('Amazonas', 'AM'),

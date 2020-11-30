@@ -1,4 +1,4 @@
-CREATE TABLE shopping_bairro.dbo.tipo_veiculo (
+CREATE TABLE tipo_veiculo (
   cd_tipo_veiculo INT NOT NULL PRIMARY KEY IDENTITY,
   nm_tipo_veiculo VARCHAR(30) NOT NULL,
   ic_ativo BIT NOT NULL DEFAULT 1,

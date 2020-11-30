@@ -1,5 +1,5 @@
-CREATE TABLE shopping_bairro.dbo.vendedor (
-  cd_vendedor INT NOT NULL PRIMARY KEY IDENITY,
+CREATE TABLE vendedor (
+  cd_vendedor INT NOT NULL PRIMARY KEY IDENTITY,
   cd_email VARCHAR(30) NOT NULL,
   nm_vendedor VARCHAR(40) NOT NULL,
   nm_sobrenome VARCHAR(40) NOT NULL,
@@ -7,9 +7,9 @@ CREATE TABLE shopping_bairro.dbo.vendedor (
   cd_celular VARCHAR(9) NOT NULL,
   cd_ddd_celular VARCHAR(2) NOT NULL,
   cd_cep VARCHAR(8) NOT NULL,
-  cd_estado INT NOT NULL FOREIGN KEY REFERENCES dbo.estados(cd_estado),
-  cd_cidade INT NOT NULL FOREIGN KEY REFERENCES dbo.cidades(cd_cidade),
-  cd_bairro INT NOT NULL FOREIGN KEY REFERENCES dbo.bairro(cd_bairro),
+  cd_estado INT NOT NULL FOREIGN KEY REFERENCES estado(cd_estado),
+  cd_cidade INT NOT NULL FOREIGN KEY REFERENCES cidade(cd_cidade),
+  cd_bairro INT NOT NULL FOREIGN KEY REFERENCES bairro(cd_bairro),
   ds_logradoura VARCHAR(30) NOT NULL,
   cd_login_token VARCHAR(30),
   cd_login_token_mobile VARCHAR(30),

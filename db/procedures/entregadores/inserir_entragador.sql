@@ -1,4 +1,4 @@
-CREATE PROCEDURE shopping_bairro.dbo.pr_inserir_entregador (
+CREATE PROCEDURE pr_inserir_entregador (
   @cd_email VARCHAR(30),
   @nm_entregador VARCHAR(40),
   @nm_sobrenome VARCHAR(40),
@@ -30,7 +30,7 @@ DECLARE @existe_email BIT;
 SELECT
   @existe_email = 1
 FROM
-  shopping_bairro.dbo.entregador e
+  entregador e
 WHERE
   e.cd_email = LOWER(TRIM(@cd_email));
 
@@ -38,8 +38,7 @@ IF @existe_email = 1
 BEGIN
   SELECT
     0 success,
-    'O e-mail informado já está em uso.' msg,
-  RETURN;
+    'O e-mail informado já está em uso.' msg
 END
 
 -- Sanitização do nome do entregador
@@ -65,7 +64,7 @@ DECLARE @existe_estado BIT;
 SELECT
   @existe_estado = 1
 FROM
-  shopping_bairro.dbo.estado e
+  estado e
 WHERE
   e.cd_estado = @cd_estado;
 
@@ -82,9 +81,9 @@ DECLARE @existe_cidade BIT;
 SELECT
   @existe_cidade = 1
 FROM
-  shopping_bairro.dbo.cidade c
+  cidade c
 WHERE
-  e.cd_cidade = @cd_cidade;
+  c.cd_cidade = @cd_cidade;
 
 IF @existe_cidade IS NULL
 BEGIN
@@ -99,19 +98,19 @@ DECLARE @cd_bairro INT;
 SELECT
   @cd_bairro = b.cd_bairro
 FROM
-  shopping_bairro.dbo.bairro b
+  bairro b
 WHERE
   b.nm_bairro = LOWER(TRIM(@nm_bairro));
 
 -- Se o bairro não estiver registrado, ele é criado
 IF @cd_bairro IS NULL
 BEGIN
-  INSERT INTO shopping_bairro.dbo.bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro)));
+  INSERT INTO bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro)));
 
   SELECT
     @cd_bairro = b.cd_bairro
   FROM
-    shopping_bairro.dbo.bairro b
+    bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro));
 END
@@ -121,19 +120,19 @@ DECLARE @cd_bairro_operacao INT;
 SELECT
   @cd_bairro_operacao = b.cd_bairro
 FROM
-  shopping_bairro.dbo.bairro b
+  bairro b
 WHERE
   b.nm_bairro = LOWER(TRIM(@nm_bairro_operacao));
 
 -- Se o bairro não estiver registrado, ele é criado
 IF @cd_bairro_operacao IS NULL
 BEGIN
-  INSERT INTO shopping_bairro.dbo.bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro_operacao)));
+  INSERT INTO bairro (nm_bairro) VALUES (LOWER(TRIM(@nm_bairro_operacao)));
 
   SELECT
     @cd_bairro_operacao = b.cd_bairro
   FROM
-    shopping_bairro.dbo.bairro b
+    bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro_operacao));
 END
@@ -141,7 +140,7 @@ END
 -- Criptografia da senha
 DECLARE @token_senha VARCHAR(100) = PWDENCRYPT(@cd_senha);
 
-INSERT INTO shopping_bairro.dbo.entregador (
+INSERT INTO entregador (
   cd_email,
   nm_entregador,
   nm_sobrenome,

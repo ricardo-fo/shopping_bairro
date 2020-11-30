@@ -1,4 +1,4 @@
-CREATE TABLE shopping_bairro.dbo.conta (
+CREATE TABLE conta (
   cd_conta INT NOT NULL PRIMARY KEY IDENTITY,
   cd_conta_gateway VARCHAR(50),
   ic_ativo BIT DEFAULT 1,
