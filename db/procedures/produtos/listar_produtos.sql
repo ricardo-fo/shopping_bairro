@@ -8,7 +8,7 @@ CREATE PROCEDURE dbo.pr_listar_produtos (
   @vl_produto_centavo BIGINT = NULL,
   @ic_ativo BIT = NULL,
   @sort_order VARCHAR(4) = NULL,
-  @sort_column VARCHAR()
+  @sort_column VARCHAR(10) = NULL,
   @per_page INT = NULL,
   @page INT = NULL
 )
