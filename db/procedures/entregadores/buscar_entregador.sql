@@ -1,4 +1,4 @@
-CREATE PROCEDURE dbo.pr_buscar_entregador (
+CREATE PROCEDURE pr_buscar_entregador (
   @cd_entregador INT = NULL,
   @cd_email VARCHAR(30) = NULL,
   @nm_entregador VARCHAR(40) = NULL,

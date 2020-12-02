@@ -1,7 +1,7 @@
 /**
  * Description: Lista os produtos de uma loja.
  */
-CREATE PROCEDURE dbo.pr_listar_produtos (
+CREATE PROCEDURE pr_listar_produtos (
   @cd_loja INT,
   @ds_titulo VARCHAR(100) = NULL,
   @ds_resumo VARCHAR(500) = NULL,
@@ -35,21 +35,11 @@ WHERE
   p.cd_loja = @cd_loja
   AND p.ic_ativo = @ic_ativo
 ORDER BY
-  CASE
-  WHEN @sort_order <> 'ASC' THEN 0
-  WHEN @sort_column = 'id' THEN p.cd_produto
-  END ASC
-  CASE
-  WHEN @sort_order <> 'ASC' THEN ''
-  WHEN @sort_column = 'titulo' THEN p.ds_titulo
-  END ASC
-  CASE
-  WHEN @sort_order <> 'DESC' THEN 0
-  WHEN @sort_column = 'id' THEN p.cd_produto
-  END DESC
-  CASE
-  WHEN @sort_order <> 'DESC' THEN ''
-  WHEN @sort_column = 'titulo' THEN p.ds_titulo
-  END DESC
-OFFSET @page * @per_page ROWS
+  CASE WHEN @sort_order <> 'ASC' THEN 0 END ASC,
+  CASE WHEN @sort_column = 'id' THEN p.cd_produto END ASC,
+  CASE WHEN @sort_order <> 'ASC' THEN '' END ASC,
+  CASE WHEN @sort_column = 'titulo' THEN p.ds_titulo END ASC,
+  CASE WHEN @sort_order <> 'DESC' THEN 0 END DESC,
+  CASE WHEN @sort_order <> 'DESC' THEN '' END DESC
+  OFFSET @page * @per_page ROWS
 FETCH NEXT @per_page ROWS ONLY;

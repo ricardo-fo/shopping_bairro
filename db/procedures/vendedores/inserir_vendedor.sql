@@ -37,8 +37,7 @@ IF @existe_email = 1
 BEGIN
   SELECT
     0 success,
-    'O e-mail informado já está em uso.' msg,
-  RETURN;
+    'O e-mail informado já está em uso.' msg
 END
 
 -- Sanitização do nome do vendedor
@@ -83,7 +82,7 @@ SELECT
 FROM
   shopping_bairro.dbo.cidade c
 WHERE
-  e.cd_cidade = @cd_cidade;
+  c.cd_cidade = @cd_cidade;
 
 IF @existe_cidade IS NULL
 BEGIN
@@ -155,7 +154,7 @@ INSERT INTO shopping_bairro.dbo.vendedor (
   @cd_estado,
   @cd_cidade,
   @cd_bairro,
-  LOWER(TRIM(@ds_logradouro)),
+  LOWER(TRIM(@ds_logradoura)),
   @ic_concorda_termos
 );
 

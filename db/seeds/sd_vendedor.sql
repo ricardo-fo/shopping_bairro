@@ -10,7 +10,7 @@ EXEC dbo.pr_inserir_vendedor
   @cd_cidade = 3,
   @nm_bairro = 'Meu bairro 5',
   @ds_logradoura = 'Minha avenida 1',
-  @ic_concorda_termos 1;
+  @ic_concorda_termos = 1;
 
 EXEC dbo.pr_inserir_vendedor
   @cd_email = 'vendedor_01@email.com',
@@ -24,7 +24,7 @@ EXEC dbo.pr_inserir_vendedor
   @cd_cidade = 4,
   @nm_bairro = 'Meu bairro 6',
   @ds_logradoura = 'Minha avenida 2',
-  @ic_concorda_termos 1;
+  @ic_concorda_termos = 1;
 
 EXEC dbo.pr_inserir_vendedor
   @cd_email = 'vendedor_02@email.com',
@@ -38,4 +38,4 @@ EXEC dbo.pr_inserir_vendedor
   @cd_cidade = 4,
   @nm_bairro = 'Meu bairro 4',
   @ds_logradoura = 'Minha avenida 3',
-  @ic_concorda_termos 1;
+  @ic_concorda_termos = 1;
