@@ -102,6 +102,9 @@ FROM
 WHERE
   b.nm_bairro = LOWER(TRIM(@nm_bairro));
 
+-- Inicialização da transação
+BEGIN TRANSACTION
+
 -- Se o bairro não estiver registrado, ele é criado
 IF @cd_bairro IS NULL
 BEGIN
@@ -113,6 +116,16 @@ BEGIN
     bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro));
+END
+
+IF @@ERROR <> 0
+BEGIN
+  ROLLBACK
+
+  SELECT
+    0 success,
+    'Erro ao inserir o novo bairro.' msg
+  RETURN;
 END
 
 -- Validação do bairro de operação
@@ -135,6 +148,16 @@ BEGIN
     bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro_operacao));
+END
+
+IF @@ERROR <> 0
+BEGIN
+  ROLLBACK
+
+  SELECT
+    0 success,
+    'Erro ao inserir o novo bairro de operação.' msg
+  RETURN;
 END
 
 -- Criptografia da senha
@@ -169,6 +192,18 @@ INSERT INTO entregador (
   LOWER(TRIM(@ds_logradouro)),
   @ic_concorda_termos
 );
+
+IF @@ERROR <> 0
+BEGIN
+  ROLLBACK
+
+  SELECT
+    0 success,
+    'Erro ao inserir o novo entregador.' msg
+  RETURN;
+END
+
+COMMIT
 
 SELECT
   1 success,

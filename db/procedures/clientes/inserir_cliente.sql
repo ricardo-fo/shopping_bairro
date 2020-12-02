@@ -101,6 +101,9 @@ FROM
 WHERE
   b.nm_bairro = LOWER(TRIM(@nm_bairro));
 
+-- Inicialização da transação
+BEGIN TRANSACTION
+
 -- Se o bairro não estiver registrado, ele é criado
 IF @cd_bairro IS NULL
 BEGIN
@@ -112,6 +115,16 @@ BEGIN
     bairro b
   WHERE
     b.nm_bairro = LOWER(TRIM(@nm_bairro));
+END
+
+IF @@ERROR <> 0
+BEGIN
+  ROLLBACK
+
+  SELECT
+    0 success,
+    'Erro ao inserir o novo bairro.' msg
+  RETURN;
 END
 
 -- Criptografia da senha
@@ -145,6 +158,17 @@ INSERT INTO cliente (
   LOWER(TRIM(@ds_logradouro)),
   @ic_concorda_termos
 );
+
+IF @@ERROR <> 0
+BEGIN
+  ROLLBACK
+
+  SELECT
+    0 success,
+    'Erro ao inserir o novo cliente.' msg
+  RETURN;
+END
+COMMIT
 
 SELECT
   1 success,
